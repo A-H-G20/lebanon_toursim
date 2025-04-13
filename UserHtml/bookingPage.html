@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking - Lebanon Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bookingPage.css">
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-stepper">
+            <div class="stepper-line"></div>
+            <div class="stepper-item active">
+                <div class="stepper-number">1</div>
+                <span>Details</span>
+            </div>
+            <div class="stepper-item">
+                <div class="stepper-number">2</div>
+                <span>Payment</span>
+            </div>
+            <div class="stepper-item">
+                <div class="stepper-number">3</div>
+                <span>Confirm</span>
+            </div>
+        </div>
+
+        <form class="booking-form">
+           
+            <section class="booking-section">
+                <h2 class="section-title">Personal Information</h2>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Nationality</label>
+                        <select required>
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+           
+            <section class="booking-section">
+                <h2 class="section-title">Payment Details</h2>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Card Number</label>
+                        <input type="text" pattern="[0-9]{16}" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Expiry Date</label>
+                        <input type="month" required>
+                    </div>
+                    <div class="input-group">
+                        <label>CVC</label>
+                        <input type="text" pattern="[0-9]{3}" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Upload Payment Proof</label>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
+                        <p>Click to upload or drag and drop<br>
+                        <span style="color: var(--text-light);">(JPEG, PNG, PDF up to 5MB)</span></p>
+                        <input type="file" hidden accept="image/*,.pdf">
+                    </div>
+                    <div class="upload-preview" id="preview"></div>
+                </div>
+            </section>
+
+           
+            <section class="booking-section">
+                <h2 class="section-title">Cancellation Policy</h2>
+                <div class="cancellation-policy">
+                    <p> Free cancellation up to 48 hours before tour<br>
+                     50% refund if canceled 24-48 hours before<br>
+                     No refund for cancellations within 24 hours</p>
+                </div>
+                <div class="input-group">
+                    <label style="display: flex; gap: 1rem; align-items: center;">
+                        <input type="checkbox" class="check" required>
+                        I agree to the terms and cancellation policy
+                    </label>
+                </div>
+            </section>
+
+            <div class="action-buttons">
+                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Complete Booking</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = uploadArea.querySelector('input');
+        const preview = document.getElementById('preview');
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) {
+                preview.style.display = 'block';
+                preview.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--light); border-radius: 8px;">
+                        <i class="fas fa-file-alt" style="color: var(--primary);"></i>
+                        <div>
+                            <p style="font-weight: 500;">${file.name}</p>
+                            <small>${(file.size/1024/1024).toFixed(2)} MB</small>
+                        </div>
+                        <button type="button" onclick="clearFile()" style="margin-left: auto; color: var(--text-light);">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            }
+        });
+
+        function clearFile() {
+            fileInput.value = '';
+            preview.style.display = 'none';
+        }
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            alert('Booking submitted successfully!');
+        });
+    </script>
+</body>
+</html>

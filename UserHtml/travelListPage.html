@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lebanon Travel Experiences | Discover Ancient Wonders</title>
+    <link rel="stylesheet" href="css/travelList.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="filter-overlay">
+      <aside class="filter-sidebar">
+        <button class="close-filters">&times;</button>
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-map-marker-alt filter-icon"></i>
+            Locations
+          </h3>
+          <div class="location-filter">
+            <div class="location-card">
+            
+              <span class="location-name">Beirut</span>
+            </div>
+            <div class="location-card">
+            
+              <span class="location-name">Byblos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-tag filter-icon"></i>
+            Tour Type
+          </h3>
+          <div class="type-filter">
+            <div class="type-pill">
+              <i class="fas fa-university"></i>
+              Cultural
+            </div>
+            <div class="type-pill">
+              <i class="fas fa-hiking"></i>
+              Adventure
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-star filter-icon"></i>
+            Rating
+          </h3>
+          <div class="rating-filter">
+            <div class="rating-item">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="rating-text">4.5 & up</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-wallet filter-icon"></i>
+            Price Range
+          </h3>
+          <div class="price-filter">
+            <input
+              type="range"
+              class="price-slider"
+              min="0"
+              max="1000"
+              step="50"
+            />
+            <div class="price-labels">
+              <span>$100</span>
+              <span>$1000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-clock filter-icon"></i>
+            Duration
+          </h3>
+          <div class="duration-filter">
+            <div class="duration-btn">1-3 Days</div>
+            <div class="duration-btn">4-7 Days</div>
+            <div class="duration-btn">8-14 Days</div>
+            <div class="duration-btn">15+ Days</div>
+          </div>
+        </div>
+
+        <button class="card-cta" style="width: 100%; margin-top: 1rem">
+          Apply Filters
+        </button>
+      </aside>
+    </div>
+    <button class="mobile-filter-btn">
+      <i class="fas fa-sliders-h"></i>
+    </button>
+    <header class="discover-header">
+      <h1>Lebanon's Hidden Treasures</h1>
+      <p>
+        Explore 200+ curated experiences across ancient cities, mountain
+        retreats, and Mediterranean coasts
+      </p>
+      <div class="search-header">
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search experiences..."
+          />
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+            Search
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="listing-container">
+      <aside class="filter-sidebar">
+        <button class="close-filters">&times;</button>
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-map-marker-alt filter-icon"></i>
+            Locations
+          </h3>
+          <div class="location-filter">
+            <div class="location-card">
+              <span class="location-name">Beirut</span>
+            </div>
+            <div class="location-card">
+              <span class="location-name">Byblos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-tag filter-icon"></i>
+            Tour Type
+          </h3>
+          <div class="type-filter">
+            <div class="type-pill">
+              <i class="fas fa-university"></i>
+              Cultural
+            </div>
+            <div class="type-pill">
+              <i class="fas fa-hiking"></i>
+              Adventure
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-star filter-icon"></i>
+            Rating
+          </h3>
+          <div class="rating-filter">
+            <div class="rating-item">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="rating-text">4.5 & up</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-wallet filter-icon"></i>
+            Price Range
+          </h3>
+          <div class="price-filter">
+            <input
+              type="range"
+              class="price-slider"
+              min="0"
+              max="1000"
+              step="50"
+            />
+            <div class="price-labels">
+              <span>$100</span>
+              <span>$1000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">
+            <i class="fas fa-clock filter-icon"></i>
+            Duration
+          </h3>
+          <div class="duration-filter">
+            <div class="duration-btn">1-3 Days</div>
+            <div class="duration-btn">4-7 Days</div>
+            <div class="duration-btn">8-14 Days</div>
+            <div class="duration-btn">15+ Days</div>
+          </div>
+        </div>
+
+        <button class="card-cta" style="width: 100%; margin-top: 1rem">
+          Apply Filters
+        </button>
+      </aside>
+
+      <section class="experience-grid">
+        <article class="experience-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('../Photos/738a9d7d4300d56cecaf687fb3fdea16.jpg');
+            "
+          >
+            <span class="card-badge">
+              <i class="fas fa-university"></i>
+              Cultural Tour
+            </span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Ancient Byblos Discovery</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i>
+              Byblos, Lebanon
+            </div>
+            <div class="card-details">
+              <div class="detail-item">
+                <i class="fas fa-clock detail-icon"></i>
+                3 Days
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-moon detail-icon"></i>
+                2 Nights
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users detail-icon"></i>
+                Small Group
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-walking detail-icon"></i>
+                Moderate
+              </div>
+            </div>
+            <div class="card-price">$299<span>/person</span></div>
+            <button class="card-cta">
+              <i class="fas fa-suitcase"></i>
+              Book Experience
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const filterSidebar = document.querySelector(".filter-sidebar");
+      const mobileFilterBtn = document.querySelector(".mobile-filter-btn");
+      const filterOverlay = document.querySelector(".filter-overlay");
+      const closeFilters = document.querySelector(".close-filters");
+
+      function toggleFilters() {
+        filterOverlay.classList.toggle("active");
+        filterSidebar.classList.toggle("active");
+      }
+
+      mobileFilterBtn.addEventListener("click", toggleFilters);
+
+      closeFilters.addEventListener("click", function (e) {
+        e.stopPropagation(); // Prevent event from bubbling to overlay
+        toggleFilters();
+      });
+
+      filterOverlay.addEventListener("click", function (e) {
+        if (e.target === filterOverlay) {
+          toggleFilters();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && filterOverlay.classList.contains("active")) {
+          toggleFilters();
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/notification.css">
+
+  </head>
+  <body>
+    <div class="menu-overlay" onclick="closeMobileMenu()"></div>
+    <button class="menu-toggle" id="menuToggle">
+   <span></span>
+   <span></span>
+   <span></span>
+</button>
+
+<nav class="sidebar" id="sidebar">
+   <div class="nav__logo">
+  <h2>Tourism</h2>
+     </div>
+     <div class="nav-item"  onclick="window.location.href='../OperatorHtml/operatorDash.html'">
+       <i class="fas fa-box"></i>
+      <span>Packages</span>
+    </div>
+    <div class="nav-item"  onclick="window.location.href='../OperatorHtml/bookinDash.html'">
+      <i class="fas fa-users"></i>
+     <span>Booking</span>
+   </div>
+ 
+ <div class="nav-item"  onclick="window.location.href='../OperatorHtml/notficationDash.html'">
+       <i class="fas fa-cog"></i>
+       <span>Notification</span>
+   </div>
+
+   <div class="nav-item"  onclick="window.location.href='../UserHtml/loginPage.html'">
+       <i class="fas fa-door-open"></i>
+       <span>Logout</span>
+   </div>
+</nav>
+<main class="main-content">
+
+<div class="notification-panel">
+    <div class="notification-header">
+        <h2>Notifications</h2>
+        <button class="btn-primary" onclick="markAllAsRead()">
+            <i class="fas fa-check-double"></i> Mark All as Read
+        </button>
+    </div>
+
+    <div class="notification-list" id="notificationList">
+        <div class="notification-item unread">
+            <div class="notification-icon notification-type booking">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="notification-content">
+                <h3>New Booking Received</h3>
+                <p>John Doe booked "Ancient Byblos Discovery" package</p>
+                <div class="notification-time">
+                    <i class="fas fa-clock"></i> 2 minutes ago
+                </div>
+            </div>
+            <span class="notification-badge">1</span>
+            <button class="mark-read-btn" onclick="markAsRead(this)">
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+
+        <div class="notification-item unread">
+            <div class="notification-icon notification-type cancellation">
+                <i class="fas fa-calendar-times"></i>
+            </div>
+            <div class="notification-content">
+                <h3>Booking Cancellation</h3>
+                <p>Sarah Smith cancelled "Beirut City Tour" package</p>
+                <div class="notification-time">
+                    <i class="fas fa-clock"></i> 1 hour ago
+                </div>
+            </div>
+            <span class="notification-badge">2</span>
+            <button class="mark-read-btn" onclick="markAsRead(this)">
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+
+        <div class="notification-item">
+            <div class="notification-icon notification-type system">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="notification-content">
+                <h3>System Update</h3>
+                <p>New dashboard features available</p>
+                <div class="notification-time">
+                    <i class="fas fa-clock"></i> 3 days ago
+                </div>
+            </div>
+            <button class="mark-read-btn" onclick="markAsRead(this)">
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+    </div>
+</div>
+</main>
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', (e) => {
+e.stopPropagation();
+sidebar.classList.toggle('active');
+menuToggle.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+if (window.innerWidth <= 768) {
+    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('active');
+    }
+}
+});
+
+window.addEventListener('resize', () => {
+if (window.innerWidth > 768) {
+    sidebar.classList.remove('active');
+    menuToggle.classList.remove('active');
+}
+});
+    let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+    let unreadCount = notifications.filter(n => !n.read).length;
+
+    function updateNotificationBadge() {
+        const badge = document.querySelector('.nav-item .notification-badge');
+        badge.textContent = unreadCount;
+        badge.style.display = unreadCount > 0 ? 'flex' : 'none';
+    }
+
+    function markAsRead(button) {
+        const notification = button.closest('.notification-item');
+        notification.classList.remove('unread');
+        notification.querySelector('.notification-badge').remove();
+        unreadCount--;
+        updateNotificationBadge();
+    }
+
+    function markAllAsRead() {
+        document.querySelectorAll('.notification-item.unread').forEach(item => {
+            item.classList.remove('unread');
+            const badge = item.querySelector('.notification-badge');
+            if (badge) badge.remove();
+        });
+        unreadCount = 0;
+        updateNotificationBadge();
+    }
+
+    function initNotifications() {
+        updateNotificationBadge();
+    }
+
+    document.querySelector('.nav-item:contains("Notifications")').innerHTML += `
+        <span class="notification-badge" style="display: ${unreadCount > 0 ? 'flex' : 'none'}">${unreadCount}</span>
+    `;
+
+    initNotifications();
+</script>
+    </body>
+    </html>
