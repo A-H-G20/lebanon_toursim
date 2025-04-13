@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../UserCSS/login.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  </head>
+  <body>
+
+    <main class="login-container">
+      <section class="form-section">
+        <header class="login-header">
+          <h1>Sign Up</h1>
+
+          <p>
+            Welcome to our website! Please sign up to create an account.<p></p>
+        </header>
+
+        <form action="" method="POST">
+          <div class="form-group">
+            <label for="username" >Full Name</label>
+            <input
+           
+              type="text"
+              id="username"
+              name="username"
+              required
+              autocomplete="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email" >Email</label>
+            <input
+           
+              type="text"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone" >Phone Number</label>
+            <input
+           
+              type="phone"
+              id="phone"
+              name="phone"
+              required
+              autocomplete="phone"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" >Password</label>
+            <div class="password-input">
+              <input
+            
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+              />
+           
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cpassword" >Confirm Password</label>
+            <div class="password-input">
+              <input
+              
+                type="password"
+                id="cpassword"
+                name="cpassword"
+                required
+                autocomplete="current-password"
+              />
+             
+            </div>
+          </div>
+
+    
+
+          <button >
+            Sign Up
+          </button>
+
+          <footer class="register-link">
+            <p>Already have an account? <a href="signup.php">Login now</a></p>
+          </footer>
+        </form>
+      </section>
+
+  
+    </main>
+
+ <script>
+</script>
+  </body>
+</html>
