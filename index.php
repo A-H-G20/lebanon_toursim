@@ -8,6 +8,7 @@
   </head>
   <body>
 
+  <?php include 'navBar.php'; ?>
     <section class="hero">
       <div class="hero__slideshow">
         <div
@@ -131,99 +132,51 @@
         </div>
       </div>
     </section>
-    <section class="packages">
-      <div class="packages__container">
-        <h2 class="packages__title">Explore Our Signature Tours</h2>
-        <p class="packages__subtitle">
-          Curated experiences showcasing Lebanon's diverse beauty and rich
-          heritage
-        </p>
+    <?php
+require 'config.php';
 
-        <div class="packages__grid">
-          <!-- Package 1 -->
-          <article class="package-card">
-            <div
-              class="package-card__image"
-              style="
-                background-image: url(./Photos/25e552c8731a7277ef060386552d41d0.jpg);
-              "
-            >
+$query = "SELECT * FROM package ORDER BY package_id DESC LIMIT 4";
+$result = $conn->query($query);
+?>
+
+<section class="packages">
+  <div class="packages__container">
+    <h2 class="packages__title">Explore Our Signature Tours</h2>
+    <p class="packages__subtitle">
+      Curated experiences showcasing Lebanon's diverse beauty and rich heritage
+    </p>
+
+    <div class="packages__grid">
+      <?php while ($row = $result->fetch_assoc()): ?>
+        <article class="package-card">
+          <div
+            class="package-card__image"
+            style="background-image: url(./uploads/<?= htmlspecialchars($row['image']) ?>);">
+            <?php if ($row['package_type'] === 'premium'): ?>
               <span class="package-badge">Best Seller</span>
-            </div>
-            <div class="package-card__content">
-              <h3>Coastal Explorer</h3>
-              <p>5-day journey from Tyre to Tripoli</p>
-              <div class="package-details">
-                <span class="price">$899</span>
-                <span class="duration">5 Days</span>
-              </div>
-              <button class="package-cta">View Details</button>
-            </div>
-          </article>
-
-          <!-- Package 2 -->
-          <article class="package-card">
-            <div
-              class="package-card__image"
-              style="
-                background-image: url(./Photos/be4d7c88d76f25e08357e0d55b26e09a.jpg);
-              "
-            ></div>
-            <div class="package-card__content">
-              <h3>Mountain Trekker</h3>
-              <p>7-day hiking adventure through Qadisha Valley</p>
-              <div class="package-details">
-                <span class="price">$1299</span>
-                <span class="duration">7 Days</span>
-              </div>
-              <button class="package-cta">View Details</button>
-            </div>
-          </article>
-
-          <!-- Package 3 -->
-          <article class="package-card">
-            <div
-              class="package-card__image"
-              style="
-                background-image: url(./Photos/67495d8701fc9ca56505ae2b27fd96fb.jpg);
-              "
-            >
+            <?php elseif ($row['package_type'] === 'new'): ?>
               <span class="package-badge">New</span>
+            <?php endif; ?>
+          </div>
+          <div class="package-card__content">
+            <h3><?= htmlspecialchars($row['package_name']) ?></h3>
+            <p><?= htmlspecialchars($row['description']) ?></p>
+            <div class="package-details">
+              <span class="price">$<?= htmlspecialchars($row['unit_price']) ?></span>
+              <span class="duration"><?= htmlspecialchars($row['average_duration']) ?> Days</span>
             </div>
-            <div class="package-card__content">
-              <h3>Cultural Immersion</h3>
-              <p>4-day Beirut & Byblos experience</p>
-              <div class="package-details">
-                <span class="price">$699</span>
-                <span class="duration">4 Days</span>
-              </div>
-              <button class="package-cta">View Details</button>
-            </div>
-          </article>
+            <a href="details.php?id=<?= $row['package_id'] ?>" class="package-cta">View Details</a>
+          </div>
+        </article>
+      <?php endwhile; ?>
+    </div>
 
-          <!-- Package 4 -->
-          <article class="package-card">
-            <div
-              class="package-card__image"
-              style="background-image: url(./Photos/2885d86d91273bd4e2e512ad8e9401c3.jpg)";
-            ></div>
-            <div class="package-card__content">
-              <h3>Luxury Escape</h3>
-              <p>6-day premium hotels & private tours</p>
-              <div class="package-details">
-                <span class="price">$1999</span>
-                <span class="duration">6 Days</span>
-              </div>
-              <button class="package-cta">View Details</button>
-            </div>
-          </article>
-        </div>
+    <div class="packages__cta">
+      <button class="view-more">View All Packages</button>
+    </div>
+  </div>
+</section>
 
-        <div class="packages__cta">
-          <button class="view-more">View All Packages</button>
-        </div>
-      </div>
-    </section>
     <section class="gallery">
       <div class="gallery__container">
         <h2 class="gallery__title">Discover Lebanon's Hidden Gems</h2>
