@@ -1,0 +1,218 @@
+:root {
+    --primary: #2A6559;
+    --primary-dark: #1F4A41;
+    --accent: #E67E22;
+    --light: #F9F5F0;
+    --text: #2C3E50;
+    --text-light: #6B7280;
+    --border: #E5E7EB;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: white;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.booking-container {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+/* Progress Stepper */
+.booking-stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.stepper-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.stepper-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--light);
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    border: 2px solid var(--border);
+}
+
+.stepper-item.active .stepper-number {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.stepper-line {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--border);
+    z-index: 1;
+}
+
+/* Booking Sections */
+.booking-section {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+/* Form Elements */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.check {
+   width: auto;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(42, 101, 89, 0.1);
+}
+
+/* Payment Upload */
+.upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: var(--primary);
+    background: var(--light);
+}
+
+.upload-preview {
+    margin-top: 1rem;
+    display: none;
+}
+
+/* Cancellation Policy */
+.cancellation-policy {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .booking-container {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+
+    .booking-section {
+        padding: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stepper-line {
+        left: 5%;
+        right: 5%;
+    }
+
+    .stepper-item span {
+        display: none;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
