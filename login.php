@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } elseif ($user['role'] == 'user') {
                 header('Location: index.php');
             } elseif ($user['role'] == 'operator') {
-                header('Location: tour_operator/index.php');
+                header('Location: tour_oprator/index.php');
             } else {
                 echo "Invalid role.";
             }
