@@ -11,7 +11,9 @@
 </head>
 
 <body>
-
+<style>
+    
+</style>
     <?php
     require 'config.php';
     $packageId = $_GET['id'] ?? 0;
