@@ -1,0 +1,231 @@
+:root {
+    --primary: #2a6559;
+    --accent: #e67e22;
+    --light: #f9f5f0;
+    --text: #2c3e50;
+    --border: #e5e7eb;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --accent-20: rgba(230, 126, 34, 0.2);
+    --text-light: #64748b;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+  
+  body {
+    background: #f8fafc;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar-header {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: var(--accent);
+    text-align: center;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .nav-item:hover {
+    background: var(--light);
+  }
+  
+  .nav-item i {
+    width: 25px;
+  }
+  
+  /* Mobile Overlay */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 998;
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin-left: 250px;
+    padding: 2rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: #1f4a41;
+    transform: translateY(-2px);
+  }
+  
+  /* Cards */
+  .cards-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    width: 300px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  
+  .card h2 {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .card p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+  
+  /* Chart Section */
+  .chart-container {
+    background: white;
+    padding: 10rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+  
+  canvas {
+    margin-top: 2rem;
+  }
+  
+  /* Filter Section */
+  .filter-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .filter-container select {
+    padding: 0.7rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .filter-container select:hover {
+    border-color: var(--primary);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    .mobile-overlay.active {
+      display: block;
+    }
+    .main-content {
+      margin-left: 0;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+  
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
