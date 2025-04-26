@@ -37,6 +37,10 @@ session_start();
   </a>
 <?php endif; ?>
 
+<?php if (!isset($_SESSION['user_id'])): ?>
+    <a href="tour_register.php" class="nav__button">Operator Register</a>
+<?php endif; ?>
+
 <?php if (isset($_SESSION['user_id'])): ?>
   <a href="logout.php" class="nav__button">Logout</a>
 <?php else: ?>
@@ -51,6 +55,9 @@ session_start();
   <a href="user_details.php" class="nav__link nav__icon-link">
     <i class="fas fa-user"></i>
   </a>
+<?php endif; ?>
+<?php if (!isset($_SESSION['user_id'])): ?>
+    <a href="tour_register.php" class="nav__button">Operator Register</a>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['user_id'])): ?>
