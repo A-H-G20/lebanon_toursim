@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Book: <?= htmlspecialchars($package['package_name']) ?></h2>
 
     <form method="POST">
-        <input type="hidden" name="base_price" value="<?= $package['unit_price'] ?>">
+        <input type="hidden" name="base_price" id="base_price" value="<?= $package['unit_price'] ?>">
 
         <div class="form-group">
             <label for="travel_date">Select Travel Date:</label>
@@ -181,6 +181,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 document.getElementById('payment_method').addEventListener('change', function() {
     const creditInfo = document.getElementById('creditInfo');
     creditInfo.style.display = (this.value === 'credit') ? 'block' : 'none';
+});
+
+// Update price dynamically
+const spotInput = document.getElementById('spot_count');
+const basePrice = parseFloat(document.getElementById('base_price').value);
+const totalPriceDisplay = document.getElementById('total_price_display');
+
+spotInput.addEventListener('input', function() {
+    const spotCount = parseInt(this.value) || 1;
+    totalPriceDisplay.value = (basePrice * spotCount).toFixed(2);
 });
 </script>
 
