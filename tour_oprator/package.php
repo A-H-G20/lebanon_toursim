@@ -17,23 +17,8 @@
         <span></span>
       </button>
 
-      <nav class="sidebar" id="sidebar">
-        <div class="nav__logo">
-          <h2>Tourism</h2>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../OperatorHtml/operatorDash.html'">
-          <i class="fas fa-box"></i><span>Packages</span>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../OperatorHtml/bookinDash.html'">
-          <i class="fas fa-users"></i><span>Booking</span>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../OperatorHtml/notficationDash.html'">
-          <i class="fas fa-cog"></i><span>Notification</span>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../UserHtml/loginPage.html'">
-          <i class="fas fa-door-open"></i><span>Logout</span>
-        </div>
-      </nav>
+      <?php include 'navbar.php'; ?>
+
 
       <main class="main-content">
         <div class="header">
