@@ -25,6 +25,13 @@
 <div class="nav-item" onclick="window.location.href='discount.php'">
   <i class="fas fa-tags"></i><span>Discount Management</span>
 </div>
+<div class="nav-item" onclick="window.location.href='city.php'">
+  <i class="fas fa-city"></i><span>City Management</span>
+</div>
+<div class="nav-item" onclick="window.location.href='state.php'">
+  <i class="fas fa-map-marked-alt"></i><span>State Management</span>
+</div>
+
 
 
   <div class="nav-item" onclick="window.location.href='../logout.php'">
