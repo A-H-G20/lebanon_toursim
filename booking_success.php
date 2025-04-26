@@ -47,7 +47,7 @@ $bookings = $stmt->get_result();
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
         h2, h3 {
-            color: #119DA4;
+            color: #2a6559;
         }
         table {
             width: 100%;
@@ -61,7 +61,7 @@ $bookings = $stmt->get_result();
             text-align: center;
         }
         th {
-            background: #119DA4;
+            background: #2a6559;
             color: white;
             font-size: 1rem;
             text-transform: uppercase;
@@ -81,7 +81,7 @@ $bookings = $stmt->get_result();
         }
         .submit-btn {
             margin-top: 2rem;
-            background-color: #119DA4;
+            background-color: #2a6559;
             color: white;
             padding: 0.8rem 2rem;
             border: none;
@@ -93,7 +93,7 @@ $bookings = $stmt->get_result();
             transition: background 0.3s ease;
         }
         .submit-btn:hover {
-            background-color: #0c7b82;
+            background-color: #2a6559;
         }
         .no-bookings {
             margin-top: 2rem;

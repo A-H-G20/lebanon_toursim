@@ -291,7 +291,7 @@ WHERE p.package_id = ?
 
     .tour-info-grid i {
         margin-right: 6px;
-        color: var(--primary, #007bff);
+        color: var(--primary, #2a6559);
     }
     /* Container for the stepper */
 .spot-stepper {
@@ -318,7 +318,7 @@ WHERE p.package_id = ?
   padding: 0.4rem 1rem;
   font-size: 1.1rem;
   border: none;
-  background-color: var(--primary, #119DA4);
+  background-color: var(--primary, #2a6559);
   color: white;
   border-radius: 8px;
   cursor: pointer;

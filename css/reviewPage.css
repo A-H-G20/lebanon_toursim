@@ -1,18 +1,13 @@
-/* Main Variables */
 :root {
-    --primary: #119DA4;
-    --primary-dark: #0c7b82;
-    --secondary: #F9BC60;
-    --accent: #FF8800;
-    --text-dark: #333333;
-    --text-light: #777777;
-    --background: #FFFFFF;
-    --background-alt: #F8F9FA;
-    --border-color: #E5E7EB;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --radius: 12px;
-    --transition: all 0.3s ease;
-  }
+  --primary: #2A6559;
+  --primary-dark: #1F4A41;
+  --accent: #E67E22;
+  --light: #F9F5F0;
+  --text: #2C3E50;
+  --text-light: #6B7280;
+  --border: #E5E7EB;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
   
   /* Base Styles */
   * {
