@@ -165,15 +165,16 @@ $result = $conn->query($query);
               <span class="price">$<?= htmlspecialchars($row['unit_price']) ?></span>
               <span class="duration"><?= htmlspecialchars($row['average_duration']) ?> Days</span>
             </div>
-            <a href="details.php?id=<?= $row['package_id'] ?>" class="package-cta">View Details</a>
+            <a href="details.php?id=<?= $row['package_id'] ?>" class="package-cta" style="text-decoration: none;">View Details</a>
           </div>
         </article>
       <?php endwhile; ?>
     </div>
 
     <div class="packages__cta">
-      <button class="view-more">View All Packages</button>
-    </div>
+  <button class="view-more" onclick="window.location.href='travel_page.php'">View All Packages</button>
+</div>
+
   </div>
 </section>
 
