@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require 'config.php';
 
 // Fetch all packages
@@ -28,6 +28,7 @@ $packages = $packagesStmt->fetch_all(MYSQLI_ASSOC);
     />
   </head>
   <body>
+  <?php include 'navBar.php'; ?>
     <div class="filter-overlay">
       <aside class="filter-sidebar">
         <button class="close-filters">&times;</button>

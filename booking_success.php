@@ -1,10 +1,10 @@
 <?php
-session_start();
 require 'config.php';
+include 'navBar.php'; // This includes session_start()
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: signin.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -28,7 +28,7 @@ $bookings = $stmt->get_result();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>My Bookings</title>
     <link rel="stylesheet" href="css/reviewPage.css">
     <style>
@@ -105,9 +105,7 @@ $bookings = $stmt->get_result();
 <body>
 
 <div class="booking-container" style="text-align: center;">
-    <h2>🎉 Booking Successful!</h2>
-    <p>Thank you for booking with us.</p>
-
+   
     <h3 style="margin-top: 3rem;">Your Previous Bookings</h3>
 
     <?php if ($bookings->num_rows > 0): ?>

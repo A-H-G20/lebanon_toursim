@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,22 +21,43 @@
       </div>
 
       <div class="nav__links">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/about" class="nav__link">About Us</a>
+        <a href="index.php" class="nav__link">Home</a>
+        <a href="travel_page.php" class="nav__link">Package</a>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="booking_success.php" class="nav__link">My Booking</a>
+        <?php endif; ?>
+        
+        <a href="about-us.php" class="nav__link">About Us</a>
 
         <div class="nav__mobile-actions">
-          <a href="/account" class="nav__link nav__icon-link">
-            <i class="fas fa-user"></i>
-          </a>
-          <a href="/login" class="nav__button">Sign In</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+  <a href="user_details.php" class="nav__link nav__icon-link">
+    <i class="fas fa-user"></i>
+  </a>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['user_id'])): ?>
+  <a href="logout.php" class="nav__button">Logout</a>
+<?php else: ?>
+  <a href="login.php" class="nav__button">Sign In</a>
+<?php endif; ?>
+
         </div>
       </div>
 
       <div class="nav__actions">
-        <a href="/account" class="nav__icon-link" aria-label="User Account">
-          <i class="fas fa-user"></i>
-        </a>
-        <a href="/login" class="nav__button">Sign up</a>
+      <?php if (isset($_SESSION['user_id'])): ?>
+  <a href="user_details.php" class="nav__link nav__icon-link">
+    <i class="fas fa-user"></i>
+  </a>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['user_id'])): ?>
+  <a href="logout.php" class="nav__button">Logout</a>
+<?php else: ?>
+  <a href="login.php" class="nav__button">Sign In</a>
+<?php endif; ?>
         <button class="nav__hamburger" aria-label="Toggle menu">☰</button>
       </div>
     </nav>
