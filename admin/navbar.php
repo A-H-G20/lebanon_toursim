@@ -22,6 +22,9 @@
 <div class="nav-item" onclick="window.location.href='operator.php'">
   <i class="fas fa-user-tie"></i><span>Operator Management</span>
 </div>
+<div class="nav-item" onclick="window.location.href='discount.php'">
+  <i class="fas fa-tags"></i><span>Discount Management</span>
+</div>
 
 
   <div class="nav-item" onclick="window.location.href='../logout.php'">
