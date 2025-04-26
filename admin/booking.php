@@ -2,15 +2,7 @@
 session_start();
 require 'connection.php';
 
-// Check if operator is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$userId = $_SESSION['user_id'];
-
-// Fetch bookings for operator's packages
+// No filtering on user_id — show all bookings
 $stmt = $conn->prepare("
     SELECT 
         b.*, 
@@ -20,16 +12,13 @@ $stmt = $conn->prepare("
         u.email AS traveler_email, 
         u.phone_number
     FROM booking b
-    LEFT JOIN package p ON b.package_id = p.package_id
-    LEFT JOIN users u ON b.user_id = u.id
-    WHERE p.user_id = ?
+    INNER JOIN package p ON b.package_id = p.package_id
+    INNER JOIN users u ON b.user_id = u.id
     ORDER BY b.booking_date DESC
 ");
-$stmt->bind_param("i", $userId);
 $stmt->execute();
 $bookings = $stmt->get_result();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,10 +34,9 @@ $bookings = $stmt->get_result();
 <main class="main-content">
 <div class="menu-overlay" onclick="closeMobileMenu()"></div>
 <button class="menu-toggle" id="menuToggle">
-  <span></span>
-  <span></span>
-  <span></span>
+  <span></span><span></span><span></span>
 </button>
+
 <?php include 'navbar.php'; ?>
 
 <div class="header">
@@ -59,7 +47,6 @@ $bookings = $stmt->get_result();
       <i class="fas fa-search"></i>
     </div>
   </div>
- 
 </div>
 
 <div class="booking-grid" id="bookingContainer">
@@ -70,7 +57,8 @@ $bookings = $stmt->get_result();
 
         <div class="booking-user">
           <div class="user-avatar">
-            <?= strtoupper(substr($b['traveler_name'], 0, 1)) ?><?= strtoupper(substr($b['traveler_name'], strpos($b['traveler_name'], ' ') + 1, 1)) ?>
+            <?= strtoupper(substr($b['traveler_name'], 0, 1)) ?>
+            <?= strtoupper(substr($b['traveler_name'], strpos($b['traveler_name'], ' ') + 1, 1)) ?>
           </div>
           <div>
             <h3><?= htmlspecialchars($b['traveler_name']) ?></h3>
@@ -88,9 +76,8 @@ $bookings = $stmt->get_result();
             <i class="fas fa-eye"></i> Details
           </button>
           <button class="report-btn" onclick="downloadReport(<?= $b['booking_id'] ?>)">
-  <i class="fas fa-download"></i> Report
-</button>
-
+            <i class="fas fa-download"></i> Report
+          </button>
         </div>
       </div>
     <?php endwhile; ?>
@@ -107,7 +94,7 @@ $bookings = $stmt->get_result();
     <h2>Booking Details</h2>
 
     <div class="detail-grid" id="bookingDetailsContainer">
-      <!-- Details dynamically filled here -->
+      <!-- Dynamic details -->
     </div>
 
     <div class="email-compose">
@@ -193,7 +180,6 @@ window.onclick = function(e) {
 function downloadReport(bookingId) {
     window.location.href = 'download_report.php?booking_id=' + bookingId;
 }
-
 </script>
 
 </body>

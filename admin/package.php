@@ -33,26 +33,23 @@
 
         <div class="package-grid" id="packageContainer"></div>
         <?php
-
 session_start();
 require 'connection.php';
-
-$userId = $_SESSION['user_id'] ?? 0;
 
 $search = $_GET['search'] ?? '';
 $searchTerm = '%' . $conn->real_escape_string($search) . '%';
 
 if (!empty($search)) {
-  $stmt = $conn->prepare("SELECT * FROM package WHERE user_id = ? AND package_name LIKE ?");
-  $stmt->bind_param("is", $userId, $searchTerm);
+    $stmt = $conn->prepare("SELECT * FROM package WHERE package_name LIKE ?");
+    $stmt->bind_param("s", $searchTerm);
 } else {
-  $stmt = $conn->prepare("SELECT * FROM package WHERE user_id = ?");
-  $stmt->bind_param("i", $userId);
+    $stmt = $conn->prepare("SELECT * FROM package");
 }
 
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 
 
 <h2 style="margin-top: 2rem;">Your Packages</h2>
