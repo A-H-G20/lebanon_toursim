@@ -2,7 +2,7 @@
 session_start();
 require 'connection.php';
 
-// Fetch user
+// Fetch users
 $search = $_GET['search'] ?? '';
 $searchTerm = '%' . $conn->real_escape_string($search) . '%';
 
@@ -21,7 +21,7 @@ $result = $stmt->get_result();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>user Management</title>
+  <title>User Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/admin.css">
@@ -34,12 +34,10 @@ $result = $stmt->get_result();
 <main class="main-content">
   <div class="header">
     <div class="header-left">
-      <h1>Manage User</h1>
+      <h1>Manage Users</h1>
     </div>
-
   </div>
 
-  <!-- Search Bar -->
   <form method="GET" style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
     <input type="text" name="search" placeholder="Search user..." 
            value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" 
@@ -47,7 +45,6 @@ $result = $stmt->get_result();
     <button type="submit" class="btn-primary" style="margin-left: 10px;">Search</button>
   </form>
 
-  <!-- user Table -->
   <table style="width: 100%; border-collapse: collapse;">
     <thead style="background-color: #f2f2f2;">
       <tr>
@@ -66,110 +63,151 @@ $result = $stmt->get_result();
             <td style="padding: 10px;"><?= htmlspecialchars($row['phone_number']) ?></td>
             <td style="padding: 10px;">
               <div class="action-buttons">
-              
-                <button class="btn-danger" onclick="deleteAdmin(<?= $row['id'] ?>)">Delete</button>
+                <button class="btn-primary" onclick="openWalletModal(<?= $row['id'] ?>)">Add to Wallet</button>
+                <button class="btn-danger" onclick="deleteUser(<?= $row['id'] ?>)">Delete</button>
               </div>
             </td>
           </tr>
         <?php endwhile; ?>
       <?php else: ?>
         <tr>
-          <td colspan="4" style="padding: 20px; text-align:center;">No user found.</td>
+          <td colspan="4" style="padding: 20px; text-align:center;">No users found.</td>
         </tr>
       <?php endif; ?>
     </tbody>
   </table>
 
-  
-
 </main>
 </div>
 
-<script>
+<!-- Wallet Modal -->
+<div id="walletModal" class="wallet-modal">
+  <div class="wallet-modal-content">
+    <span class="close-btn" onclick="closeWalletModal()">&times;</span>
+    <h2>Add Amount to Wallet</h2>
+    <form method="POST" action="wallet_add.php">
+      <input type="hidden" name="user_id" id="walletUserId">
+      <div class="form-group">
 
-function deleteAdmin(id) {
-  if (confirm("Are you sure you want to delete this admin?")) {
+        <input type="number" name="amount" required min="1" placeholder="Enter amount to add">
+      </div>
+      <button type="submit" class="btn-primary" style="margin-top: 1rem;">Add Amount</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function deleteUser(id) {
+  if (confirm("Are you sure you want to delete this user?")) {
     window.location.href = "delete_user.php?id=" + id;
   }
 }
-</script>
 
-</body>
-</html>
+function openWalletModal(userId) {
+  document.getElementById('walletModal').style.display = 'block';
+  document.getElementById('walletUserId').value = userId;
+}
+
+function closeWalletModal() {
+  document.getElementById('walletModal').style.display = 'none';
+}
+</script>
 <style>
-    /* Admin Form Styling */
-#adminForm {
-  margin-top: 2rem;
+/* Wallet Modal Overlay */
+.wallet-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  overflow: auto;
+}
+
+/* Wallet Modal Content */
+.wallet-modal-content {
   background: white;
+  margin: 8% auto;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: slideIn 0.3s ease-out;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+/* Close Button */
+.close-btn {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
-.form-group {
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+/* Form inside Modal */
+.wallet-modal-content form {
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
 }
 
-.form-group label {
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-}
-
-.form-group input {
+.wallet-modal-content input[type="number"] {
+  width: 100%;
   padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.form-group input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(42, 101, 89, 0.1);
+.wallet-modal-content input[type="number"]:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 3px rgba(17, 157, 164, 0.2);
   outline: none;
 }
 
-button.btn-primary {
-  background: var(--primary);
-  color: white;
-  padding: 0.8rem 1.5rem;
+/* Submit Button */
+.wallet-modal-content button[type="submit"] {
+  background: #2c3e50;
   border: none;
-  border-radius: 8px;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+  transition: background 0.3s, transform 0.3s;
 }
 
-button.btn-primary:hover {
-  background: #1f4a41;
+.wallet-modal-content button[type="submit"]:hover {
+  background: #2c3e50;
   transform: translateY(-2px);
 }
 
-/* Cancel button style */
-button.btn-primary[style*="background: var(--text-light);"] {
-  background: var(--text-light);
-}
-
-button.btn-primary[style*="background: var(--text-light);"]:hover {
-  background: #94a3b8;
-}
-
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
-
 </style>
+
+
+</body>
+</html>
