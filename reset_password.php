@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->execute()) {
             unset($_SESSION['reset_email']);
             $_SESSION['success_message'] = "Password reset successfully. Please log in.";
-            header("Location: signIn.php");
+            header("Location: login.php");
             exit();
         } else {
             $error_message = "Something went wrong. Please try again.";
