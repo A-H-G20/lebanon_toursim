@@ -136,7 +136,7 @@
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                             $mail->Port = 587;
 
-                            $mail->setFrom('ahmadghosen20@gmail.com', 'Lebanon Tours Admin');
+                            $mail->setFrom('email@gmail.com', 'Lebanon Tours Admin');
                             $mail->addAddress($email, $name);
                             $mail->isHTML(true);
                             $mail->Subject = 'Welcome to Lebanon Tours - Account Pending Approval';
