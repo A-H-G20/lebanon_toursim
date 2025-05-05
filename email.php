@@ -1,4 +1,4 @@
 <?php
 
-$mail->Username = 'ahmadghosen20@gmail.com';
-$mail->Password = 'bbievwnemblpxuqt';
+$mail->Username = 'email@gmail.com';
+$mail->Password = 'OTP password';
