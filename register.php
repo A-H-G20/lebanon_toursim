@@ -1,5 +1,5 @@
 <?php
-
+include 'config.php'; // Include your database connection file
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -7,11 +7,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-$conn = new mysqli("localhost", "root", "", "lebanon_toursim");
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 $error = '';
 $success = '';
