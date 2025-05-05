@@ -72,7 +72,7 @@
                 Explore ancient Phoenician cities, Roman temples, and Crusader
                 castles with expert guides
               </p>
-              <a href="#" class="service-card__cta">View Tours →</a>
+             
             </div>
           </article>
 
@@ -90,7 +90,7 @@
                 Hike through cedar reserves, ski the Qadisha Valley, or
                 paraglide over coastal cliffs
               </p>
-              <a href="#" class="service-card__cta">View Adventures →</a>
+           
             </div>
           </article>
 
@@ -108,7 +108,7 @@
                 From Beirut street food to vineyard tours - taste Lebanon's
                 legendary cuisine
               </p>
-              <a href="#" class="service-card__cta">Explore Foods →</a>
+          
             </div>
           </article>
 
@@ -126,7 +126,7 @@
                 Stay in Ottoman-era mansions or modern beachfront resorts with
                 curated experiences
               </p>
-              <a href="#" class="service-card__cta">View Stays →</a>
+            
             </div>
           </article>
         </div>

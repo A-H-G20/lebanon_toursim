@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit">Sign In</button>
 
                 <footer class="register-link">
-                    <p>Don't have an account? <a href="signup.php">Register now</a></p>
+                    <p>Don't have an account? <a href="register.php">Register now</a></p>
                 </footer>
             </form>
         </section>
