@@ -1,95 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reset Password</title>
     <link href="photos/logo.png" rel="icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="./css/signIn.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Secular+One&display=swap');
-        .error-message { color: red; margin: 10px 0; text-align: center; }
-        .success-message { color: green; margin: 10px 0; text-align: center; }
+
+        .error-message {
+            color: red;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .success-message {
+            color: green;
+            margin: 10px 0;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
 
-<header class="small-header">
-    <div class="nav__logo">
-        <img src="Photos/logo.png" height="60px" width="100px" alt="Logo">
-    </div>
-</header>
+    <header class="small-header">
 
-<main class="login-container">
-    <section class="form-section">
-        <header class="login-header">
-            <p>Reset Your Password</p>
-        </header>
+    </header>
 
-        <?php if (!empty($error_message)): ?>
-            <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
-        <?php endif; ?>
+    <main class="login-container">
+        <section class="form-section">
+            <header class="login-header">
+                <p>Reset Your Password</p>
+            </header>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="new_password">New Password</label>
-                <div class="password-input">
-                    <input
-                        class="yellowcolor"
-                        type="password"
-                        id="new_password"
-                        name="new_password"
-                        required
-                        autocomplete="new-password"
-                    />
-                    <span class="password-toggle" onclick="togglePassword('new_password')">
-                        <i class="fa fa-eye"></i>
-                    </span>
+            <?php if (!empty($error_message)): ?>
+                <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
+            <?php endif; ?>
+
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="new_password">New Password</label>
+                    <div class="password-input">
+                        <input
+                            class="yellowcolor"
+                            type="password"
+                            id="new_password"
+                            name="new_password"
+                            required
+                            autocomplete="new-password" />
+                        <span class="password-toggle" onclick="togglePassword('new_password')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="confirm_password">Confirm Password</label>
-                <div class="password-input">
-                    <input
-                        class="yellowcolor"
-                        type="password"
-                        id="confirm_password"
-                        name="confirm_password"
-                        required
-                        autocomplete="new-password"
-                    />
-                    <span class="password-toggle" onclick="togglePassword('confirm_password')">
-                        <i class="fa fa-eye"></i>
-                    </span>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <div class="password-input">
+                        <input
+                            class="yellowcolor"
+                            type="password"
+                            id="confirm_password"
+                            name="confirm_password"
+                            required
+                            autocomplete="new-password" />
+                        <span class="password-toggle" onclick="togglePassword('confirm_password')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit">Reset Password</button>
-        </form>
-    </section>
-</main>
+                <button type="submit">Reset Password</button>
+            </form>
+        </section>
+    </main>
 
-<script>
-function togglePassword(inputId) {
-    const passwordInput = document.getElementById(inputId);
-    const eyeIcon = passwordInput.nextElementSibling.querySelector('i');
+    <script>
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const eyeIcon = passwordInput.nextElementSibling.querySelector('i');
 
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        eyeIcon.classList.remove('fa-eye');
-        eyeIcon.classList.add('fa-eye-slash');
-    } else {
-        passwordInput.type = 'password';
-        eyeIcon.classList.remove('fa-eye-slash');
-        eyeIcon.classList.add('fa-eye');
-    }
-}
-</script>
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 
 </body>
+
 </html>
 <?php
 session_start();

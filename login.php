@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/login.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
+
 <body>
     <main class="login-container">
         <section class="form-section">
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </label>
                         <p style="color: #2a6559;">Remember Me</p>
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <a href="forget.php" class="forgot-password">Forgot password?</a>
                 </div>
                 <button type="submit">Sign In</button>
 
@@ -118,4 +120,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </body>
+
 </html>
