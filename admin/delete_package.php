@@ -7,11 +7,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $id = $_GET['id'];
-$userId = $_SESSION['user_id'];
 
-// Delete only if the package belongs to the logged-in user
-$stmt = $conn->prepare("DELETE FROM package WHERE package_id = ? AND user_id = ?");
-$stmt->bind_param("ii", $id, $userId);
+// Delete the package without checking user ownership
+$stmt = $conn->prepare("DELETE FROM package WHERE package_id = ?");
+$stmt->bind_param("i", $id);
 $stmt->execute();
 
 header("Location: operatorDash.html");
